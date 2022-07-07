@@ -1,27 +1,8 @@
-import { useEffect, useState } from "react";
-import { useIndexedDB } from "react-indexed-db";
+import { useTransactions } from "../../hooks/useTransactionsContext";
 import { Conteiner } from "./styles";
 
 export const TransactionsTable = () => {
-  type transactionsProps = {
-    title: string;
-    amount: number;
-    type: string;
-    category: string;
-    data: string;
-    id: string;
-  };
-
-  const { getAll } = useIndexedDB("transactions");
-
-  const [transactions, setTransaction] = useState<transactionsProps[]>([]);
-
-  useEffect(() => {
-    getAll().then((transaction: any) => {
-      setTransaction(transaction);
-    });
-  }, []);
-
+  const {transactions} = useTransactions();
   return (
     <Conteiner>
       <table>

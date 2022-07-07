@@ -6,6 +6,7 @@ import Modal from "react-modal";
 import { NewTransactionModal } from "./components/NewTransactionModal";
 import { initDB } from "react-indexed-db";
 import { useState } from "react";
+import { TransactionsProvider } from "./hooks/useTransactionsContext";
 
 initDB(DBConfig);
 
@@ -24,7 +25,7 @@ export const App = () => {
   };
 
   return (
-    <>
+    <TransactionsProvider>
       <Header onOpenNewTranslationModal={handleOpenNewTranslationModal} />
       <Dashboard />
       <GlobalStyle />
@@ -32,6 +33,6 @@ export const App = () => {
         isOpen={isNewTranslationModalOpen}
         onRequestClose={handleCloseNewTranslationModal}
       />
-    </>
+    </TransactionsProvider>
   );
 };
