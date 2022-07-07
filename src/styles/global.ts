@@ -86,4 +86,12 @@ h1,h2,h3,h4,h5,h6,strong{
   position:relative;
   border-radius:0.24rem;
 }
+
+.react-modal-close{
+  position:absolute;
+  right: 1.5rem;
+  top: 0.5rem;
+  border: 0;
+  background: transparent;
+}
 `;

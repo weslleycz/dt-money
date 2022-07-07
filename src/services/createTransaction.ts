@@ -4,23 +4,26 @@ import { dataGet } from "../utils/dataGet";
 
 type createTransactionProps = {
   title: string;
-  price: number;
+  amount: number;
+  type: string;
   category: string;
 };
 
 export const CreateTransaction = ({
   title,
-  price,
+  amount,
   category,
+  type,
 }: createTransactionProps) => {
   const { add } = useIndexedDB("transactions");
-
-  add({ title, price, category, data: dataGet(), id: uuidv4() }).then(
+  add({ title, amount, type, category, data: dataGet(), id: uuidv4() }).then(
     (event) => {
-      console.log("Create");
+      console.log("Ok");
     },
     (error) => {
-      console.log(error);
+      throw new Error('Oooops!');
     }
   );
+  return "ok"
+ 
 };
